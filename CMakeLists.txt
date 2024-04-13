@@ -1,31 +1,15 @@
-cmake_minimum_required(VERSION 3.10)
-project(Planning)
-set(CMAKE_CXX_STANDARD 11)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
-
-aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC_LISTS)
-
-add_library(common
-    SHARED
-    ${SRC_LISTS}
+cmake_minimum_required(VERSION 3.29.0)
+project(CMake_Planning_Test
+    VERSION 1.0
+    DESCRIPTION "A test project for CMake Planning"
+    HOMEPAGE_URL "https://github.com/GuoxiongSUN/CMake_Planning_Test"
+    LANGUAGES CXX
 )
 
-target_include_directories(common 
-    PUBLIC
-    ${PROJECT_SOURCE_DIR}/include
-)
+set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(Process_Dir ${CMAKE_SOURCE_DIR}/src/process)
+set(PNC_Map_Dir ${CMAKE_SOURCE_DIR}/src/pnc_map)
 
-# set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-add_executable(planning_main planning_main.cpp)
-
-target_include_directories(planning_main
-PUBLIC
-${PROJECT_SOURCE_DIR}/include
-)
-
-target_link_libraries(planning_main
-PUBLIC
-common
-)
+add_subdirectory(src)
