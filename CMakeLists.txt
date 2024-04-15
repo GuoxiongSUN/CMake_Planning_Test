@@ -13,5 +13,20 @@ set(Process_Dir ${CMAKE_SOURCE_DIR}/src/process)
 set(PNC_Map_Dir ${CMAKE_SOURCE_DIR}/src/pnc_map)
 set(Show_Result_Dir ${CMAKE_SOURCE_DIR}/src/show_result)
 
+#third party library
+set(EIGEN3_INCLUDE_DIR "W:\\mylib\\eigen-3.4.0")
+list(APPEND CMAKE_MODULE_PATH "${EIGEN3_INCLUDE_DIR}/cmake")
+message("CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}")
+
+
+find_package(Eigen3 3.4 REQUIRED)
+
+if(TARGET Eigen3::Eigen)
+    message(STATUS "Found Eigen3: ${Eigen3_VERSION}")
+else()
+    message(FATAL_ERROR "Could not find Eigen3")
+endif()
+
+
 
 add_subdirectory(src)
