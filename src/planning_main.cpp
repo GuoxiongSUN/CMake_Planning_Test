@@ -1,5 +1,6 @@
 #include <iostream>
 #include "process.h"
+#include "show_result.h"
 
 using namespace std;
 
@@ -8,5 +9,9 @@ int main() {
     Process pro;
     pro.planProcess();
     cout << "planning end" << endl;
+
+    ShowResult show;
+    show.drawResult();
+
     return 0;
 }
